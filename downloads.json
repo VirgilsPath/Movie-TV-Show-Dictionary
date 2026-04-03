@@ -1,7 +1,42 @@
 {
-    "Media To Download": {
-        "Movies": [],
-        "Tv Shows": [],
-        "Music": []
+    "media to download": {
+        "movies": [
+            {
+                "name": "Stir of Echoes",
+                "year": "1999",
+                "downloaded": true
+            }
+        ],
+        "tvshows": [
+            {
+                "name": "Solo Leveling",
+                "year": "2024",
+                "seasons": {
+                    "Season 1": true,
+                    "Season 2": true
+                }
+            },
+            {
+                "name": "Upload",
+                "year": "2020",
+                "seasons": {
+                    "Season 1": true,
+                    "Season 2": true,
+                    "Season 3": true,
+                    "Season 4": true
+                }
+            }
+        ],
+        "music": [
+            {
+                "name": "Her Words Kill",
+                "album": {
+                    "Load My Revolver Baby": {
+                        "year": "2005",
+                        "downloaded": true
+                    }
+                }
+            }
+        ]
     }
 }
