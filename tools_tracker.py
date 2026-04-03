@@ -22,4 +22,15 @@ def init_db():
     else:
         print("Database already exists.")
 
-init_db()
+def load_menu():
+    path = get_path()
+    try:
+        with open(path, 'r') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        # If the file is missing, return the empty skeleton
+        return {"Media To Download": {"Movies": [], "TV Shows": [], "Music": []}}
+
+# need to make a load function
+# need to make a save function
+# need to make a add_item function
