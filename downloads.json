@@ -2,9 +2,19 @@
     "media to download": {
         "movies": [
             {
+                "name": "Inside",
+                "year": "2007",
+                "downloaded": false
+            },
+            {
                 "name": "Stir of Echoes",
                 "year": "1999",
                 "downloaded": true
+            },
+            {
+                "name": "The House That Jack Built",
+                "year": "2018",
+                "downloaded": false
             }
         ],
         "tvshows": [

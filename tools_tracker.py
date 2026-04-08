@@ -114,3 +114,9 @@ def add_item(data, category, name, year, downloaded=False, seasons=None, album=N
     menu_category.sort(key=lambda x: x["name"].lower())
     save_menu(data)
 
+def prompt_back_or_exit():
+    user_input = input("Type 'back' to go back or 'exit' to exit: ").lower()
+    if user_input == 'exit':
+        print("\nGoodbye!")
+        return "exit"
+    return "back"

@@ -29,12 +29,8 @@ try:
                 # list is empty
                 print("\nYour movie list is empty.")
 
-            user_input = input("Type 'back' to go back or 'exit' to exit: ")
-
-            if user_input.lower() == 'back':
-                continue
-            elif user_input.lower() == 'exit':
-                print("\nGoodbye!")
+            action = tools_tracker.prompt_back_or_exit()
+            if action == "exit":
                 break
         
         elif choice == "2":
@@ -45,7 +41,7 @@ try:
             if len(tv_show_list) > 0:
                 print("\n----- Tv Shows -----")
                 for show in tv_show_list:
-                    print(f"Name: {show['name']} | Year: {show['year']} | Downloaded: {show['downloaded']}")
+                    print(f"Name: {show['name']} | Year: {show['year']}")
 
                     # check if this show has the "seasons" key
                     if "seasons" in show:
@@ -58,12 +54,8 @@ try:
                 # list is empty
                 print("\nYour tv show list is empty.")
 
-            user_input = input("Type 'back' to go back or 'exit' to exit: ")
-
-            if user_input.lower() == 'back':
-                continue
-            elif user_input.lower() == 'exit':
-                print("\nGoodbye!")
+            action = tools_tracker.prompt_back_or_exit()
+            if action == "exit":
                 break
 
         elif choice == "3":
@@ -86,12 +78,8 @@ try:
                 # list is empty
                 print("\nYour music list is empty.")
 
-            user_input = input("Type 'back' to go back or 'exit' to exit: ")
-
-            if user_input.lower() == 'back':
-                continue
-            elif user_input.lower() == 'exit':
-                print("\nGoodbye!")
+            action = tools_tracker.prompt_back_or_exit()
+            if action == "exit":
                 break
         
         elif choice == "4":
@@ -104,6 +92,10 @@ try:
                     print("\nReturning to Main Menu...")
                     break
                 
+                elif cat not in ["movies", "tvshows", "music"]:
+                    print("Invalid category. Please type Movies, Tv Shows, or Music.")
+                    continue
+
                 name = ""
                 year = ""
                 is_downloaded = False
@@ -121,7 +113,7 @@ try:
                             break
                         print("Invalid input. Please type 'y' or 'n'.")
 
-                if cat == "tvshows":            
+                elif cat == "tvshows":            
                     name = input("Enter TV Show Name: ")
                     year = input("Enter TV Show Year: ")
                     s_data = {}
