@@ -63,7 +63,7 @@ def add_item(data, category, name, year, downloaded=False, seasons=None, album=N
     # check if item exists first
     existing_item = None
     for item in menu_category:
-        if item["name"].lower() == name.lower():
+        if item["name"].lower() == name.lower() and item.get("year") == year:
             existing_item = item
             break
     
@@ -115,8 +115,12 @@ def add_item(data, category, name, year, downloaded=False, seasons=None, album=N
     save_menu(data)
 
 def prompt_back_or_exit():
-    user_input = input("Type 'back' to go back or 'exit' to exit: ").lower()
-    if user_input == 'exit':
-        print("\nGoodbye!")
-        return "exit"
-    return "back"
+    while True:
+        user_input = input("Type 'back' to go back or 'exit' to exit: ").lower()
+        if user_input == 'exit':
+            print("\nGoodbye!")
+            return "exit"
+        elif user_input == 'back':
+            return "back"
+        else:
+            print("Invalid input. Please type 'back' or 'exit'.")

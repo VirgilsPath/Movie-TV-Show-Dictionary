@@ -83,83 +83,95 @@ try:
                 break
         
         elif choice == "4":
-            while True:
-                print("\n----- Add Item -----")
-                raw_cat = input("Category (Movies, Tv Shows, or Music) or type 'goback' to go back to menu: ").strip()
-                cat = raw_cat.lower().replace(" ", "")
+            print("\n----- Add Item -----")
+            raw_cat = input("Category (Movies, Tv Shows, or Music) or type 'goback' to go back to menu: ").strip()
+            cat = raw_cat.lower().replace(" ", "")
 
-                if cat == "goback":
-                    print("\nReturning to Main Menu...")
-                    break
-                
-                elif cat not in ["movies", "tvshows", "music"]:
-                    print("Invalid category. Please type Movies, Tv Shows, or Music.")
-                    continue
-
-                name = ""
-                year = ""
-                is_downloaded = False
-                s_data = None
-                a_data = None
-
-                if cat == "movies":
-                    name = input(f"Enter Movie Name: ")
-                    year = input(f"Enter Movie Year: ")
-                
-                    while True:
-                        is_down_raw = input("Is is downloaded? (y/n): ").lower()
-                        if is_down_raw in ['y', 'n']:
-                            is_downloaded = (is_down_raw == 'y')
-                            break
-                        print("Invalid input. Please type 'y' or 'n'.")
-
-                elif cat == "tvshows":            
-                    name = input("Enter TV Show Name: ")
-                    year = input("Enter TV Show Year: ")
-                    s_data = {}
-
-                    while True:
-                        s_num = input("Enter Season Number (e.g., Season 1) or type 'done' to finish: ").strip()
-                        if s_num.lower() == 'done':
-                            break
-                        
-                        # specific season status
-                        while True:
-                            is_down_raw = input(f"Is {s_num} downloaded? (y/n): ").lower()
-                            if is_down_raw in ['y', 'n']:
-                                s_data[s_num] = (is_down_raw == 'y')
-                                break
-                            print("Invalid input. Please type 'y' or 'n'.")
-
-                elif cat == "music":
-                    name = input("Enter Band/Artist Name: ")
-                    
-                    a_data = {}
-
-                    while True:
-                        album_name = input("Enter Album Name or type 'done' to finish: ").strip()
-                        if album_name.lower() == 'done':
-                            break
-                        
-                        album_year = input(f"Enter Album Year for '{album_name}': ")
-
-                        # ask for this specific album's status
-                        while True:
-                            is_down_raw = input(f"Is '{album_name}' downloaded? (y/n): ").lower()
-                            if is_down_raw in ['y', 'n']:
-                                a_data[album_name] = {"year": album_year, "downloaded": (is_down_raw == 'y')}
-                                break
-                            print("Invalid input. Please type 'y' or 'n'.")
-
-                    if not a_data: a_data = None
-
-
-                tools_tracker.add_item(data, cat, name, year, downloaded=is_downloaded, seasons=s_data, album=a_data)
-
-                print(f"\n--- {name} has been updated in {cat}! ---")
-                
-                data = tools_tracker.load_menu()
+            if cat == "goback":
+                print("\nReturning to Main Menu...")
                 break
+            elif cat not in ["movies", "tvshows", "music"]:
+                print("Invalid category. Please type Movies, Tv Shows, or Music.")
+                continue
+            else:
+                stay_in_add = True
+                while stay_in_add:
+                    print("\n----- Add Item -----")
+
+                    name = ""
+                    year = ""
+                    is_downloaded = False
+                    s_data = None
+                    a_data = None
+
+                    if cat == "movies":
+                        name = input(f"Enter Movie Name: ")
+                        year = input(f"Enter Movie Year: ")
+                    
+                        while True:
+                            is_down_raw = input("Is is downloaded? (y/n): ").lower()
+                            if is_down_raw in ['y', 'n']:
+                                is_downloaded = (is_down_raw == 'y')
+                                break
+                            print("Invalid input. Please type 'y' or 'n'.")
+
+                    elif cat == "tvshows":            
+                        name = input("Enter TV Show Name: ")
+                        year = input("Enter TV Show Year: ")
+                        s_data = {}
+
+                        while True:
+                            s_num = input("Enter Season Number (e.g., Season 1) or type 'done' to finish: ").strip()
+                            if s_num.lower() == 'done':
+                                break
+                            
+                            # specific season status
+                            while True:
+                                is_down_raw = input(f"Is {s_num} downloaded? (y/n): ").lower()
+                                if is_down_raw in ['y', 'n']:
+                                    s_data[s_num] = (is_down_raw == 'y')
+                                    break
+                                print("Invalid input. Please type 'y' or 'n'.")
+
+                    elif cat == "music":
+                        name = input("Enter Band/Artist Name: ")
+                        
+                        a_data = {}
+
+                        while True:
+                            album_name = input("Enter Album Name or type 'done' to finish: ").strip()
+                            if album_name.lower() == 'done':
+                                break
+                            
+                            album_year = input(f"Enter Album Year for '{album_name}': ")
+
+                            # ask for this specific album's status
+                            while True:
+                                is_down_raw = input(f"Is '{album_name}' downloaded? (y/n): ").lower()
+                                if is_down_raw in ['y', 'n']:
+                                    a_data[album_name] = {"year": album_year, "downloaded": (is_down_raw == 'y')}
+                                    break
+                                print("Invalid input. Please type 'y' or 'n'.")
+
+                        if not a_data: a_data = None
+
+
+                    tools_tracker.add_item(data, cat, name, year, downloaded=is_downloaded, seasons=s_data, album=a_data)
+
+                    print(f"\n--- {name} has been updated in {cat}! ---")
+                    
+                    data = tools_tracker.load_menu()
+                    
+                    while True:
+                        again = input(f"\nAdd another {raw_cat}? (y/n): ").lower()
+                        if again == 'y':
+                            break # loops back to add another
+                        elif again == 'n':
+                            stay_in_add = False # exits the add loop > back to main menu
+                            print("\nReturning to Main Menu...")
+                            break
+                        else:
+                            print("Invalid input. Please type 'y' or 'n'.")
 
         elif choice == "5":
             print("\nGoodbye!")

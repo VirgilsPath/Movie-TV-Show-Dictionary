@@ -2,9 +2,39 @@
     "media to download": {
         "movies": [
             {
+                "name": "28 Years Later",
+                "year": "2025",
+                "downloaded": true
+            },
+            {
+                "name": "Ghost Ship",
+                "year": "2002",
+                "downloaded": true
+            },
+            {
+                "name": "Ghosts of Mars",
+                "year": "2001",
+                "downloaded": true
+            },
+            {
+                "name": "House of Wax",
+                "year": "2005",
+                "downloaded": true
+            },
+            {
                 "name": "Inside",
                 "year": "2007",
                 "downloaded": false
+            },
+            {
+                "name": "Killer Sofa",
+                "year": "2019",
+                "downloaded": true
+            },
+            {
+                "name": "Redline",
+                "year": "2009",
+                "downloaded": true
             },
             {
                 "name": "Stir of Echoes",
@@ -12,9 +42,34 @@
                 "downloaded": true
             },
             {
+                "name": "The Devil's Rock",
+                "year": "2011",
+                "downloaded": true
+            },
+            {
                 "name": "The House That Jack Built",
                 "year": "2018",
                 "downloaded": false
+            },
+            {
+                "name": "The Thing",
+                "year": "2011",
+                "downloaded": true
+            },
+            {
+                "name": "The Thing",
+                "year": "1982",
+                "downloaded": true
+            },
+            {
+                "name": "Unfriended",
+                "year": "2014",
+                "downloaded": true
+            },
+            {
+                "name": "Unfriended: Dark Web",
+                "year": "2018",
+                "downloaded": true
             }
         ],
         "tvshows": [
