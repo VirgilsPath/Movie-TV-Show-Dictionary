@@ -11,22 +11,31 @@ try:
         print("2. Show Tv Show List")
         print("3. Show Music List")
         print("4. Add Your Item")
-        print("5. Exit")
+        print("5. Edit Item")
+        print("6. Exit")
         print()
 
         choice = input("Choose a number to proceed: ")
 
         if choice == "1":
-            # find list
             movie_list = data["media to download"]["movies"]
-            
-            # check if list has movies
             if len(movie_list) > 0:
+                filter_choice = tools_tracker.prompt_filter()
+                
+                if filter_choice == "1":
+                    filtered = movie_list
+                elif filter_choice == "2":
+                    filtered = [m for m in movie_list if m['downloaded']]
+                elif filter_choice == "3":
+                    filtered = [m for m in movie_list if not m['downloaded']]
+
                 print("\n----- Movies -----")
-                for mov in movie_list:
-                    print(f"Name: {mov['name']} | Year: {mov['year']} | Downloaded: {mov['downloaded']}")
+                if len(filtered) > 0:
+                    for mov in filtered:
+                        print(f"Name: {mov['name']} | Year: {mov['year']} | Downloaded: {mov['downloaded']}")
+                else:
+                    print("No movies found with that filter.")
             else:
-                # list is empty
                 print("\nYour movie list is empty.")
 
             action = tools_tracker.prompt_back_or_exit()
@@ -34,48 +43,57 @@ try:
                 break
         
         elif choice == "2":
-            # find list
             tv_show_list = data["media to download"]["tvshows"]
-            
-            # check if list has tv shows
             if len(tv_show_list) > 0:
+                filter_choice = tools_tracker.prompt_filter()
+
+                if filter_choice == "1":
+                    filtered = tv_show_list
+                elif filter_choice == "2":
+                    filtered = [s for s in tv_show_list if "seasons" in s and any(v for v in s["seasons"].values())]
+                elif filter_choice == "3":
+                    filtered = [s for s in tv_show_list if "seasons" in s and any(not v for v in s["seasons"].values())]
+
                 print("\n----- Tv Shows -----")
-                for show in tv_show_list:
-                    print(f"Name: {show['name']} | Year: {show['year']}")
-
-                    # check if this show has the "seasons" key
-                    if "seasons" in show:
-                        # loop through sub-dictionary
-                        for s_name, s_status in show["seasons"].items():
-                            status_text = "True" if s_status else "Need"
-                            print(f"   > {s_name}: {status_text}")
-
+                if len(filtered) > 0:
+                    for show in filtered:
+                        print(f"Name: {show['name']} | Year: {show['year']}")
+                        if "seasons" in show:
+                            for s_name, s_status in show["seasons"].items():
+                                status_text = "Downloaded" if s_status else "Need"
+                                print(f"   > {s_name}: {status_text}")
+                else:
+                    print("No TV shows found with that filter.")
             else:
-                # list is empty
-                print("\nYour tv show list is empty.")
+                print("\nYour TV show list is empty.")
 
             action = tools_tracker.prompt_back_or_exit()
             if action == "exit":
                 break
 
         elif choice == "3":
-            # find list
             music_list = data["media to download"]["music"]
-            
-            # check if list has music
             if len(music_list) > 0:
+                filter_choice = tools_tracker.prompt_filter()
+
+                if filter_choice == "1":
+                    filtered = music_list
+                elif filter_choice == "2":
+                    filtered = [m for m in music_list if "album" in m and any(a["downloaded"] for a in m["album"].values())]
+                elif filter_choice == "3":
+                    filtered = [m for m in music_list if "album" in m and any(not a["downloaded"] for a in m["album"].values())]
+
                 print("\n----- Music -----")
-                for music in music_list:
-                    print(f"Artist: {music['name']}")
-
-                    # check for Album key
-                    if "album" in music:
-                        for a_name, a_info in music["album"].items():
-                            status_text = "True" if a_info["downloaded"] else "Need"
-                            print(f"   > {a_name} ({a_info['year']}): {status_text}")
-
+                if len(filtered) > 0:
+                    for music in filtered:
+                        print(f"Artist: {music['name']}")
+                        if "album" in music:
+                            for a_name, a_info in music["album"].items():
+                                status_text = "Downloaded" if a_info["downloaded"] else "Need"
+                                print(f"   > {a_name} ({a_info['year']}): {status_text}")
+                else:
+                    print("No music found with that filter.")
             else:
-                # list is empty
                 print("\nYour music list is empty.")
 
             action = tools_tracker.prompt_back_or_exit()
@@ -121,11 +139,20 @@ try:
                         s_data = {}
 
                         while True:
-                            s_num = input("Enter Season Number (e.g., Season 1) or type 'done' to finish: ").strip()
-                            if s_num.lower() == 'done':
+                            s_raw = input("Enter Season Number or type 'done' to finish: ").strip()
+                            if s_raw.lower() == 'done':
                                 break
                             
-                            # specific season status
+                            if not s_raw.isdigit():
+                                print("Invalid input. Please enter a number only (e.g. 1, 2, 3).")
+                                continue
+
+                            s_num = f"Season {s_raw}"
+
+                            if s_num in s_data:
+                                print(f"{s_num} is already added. Skipping.")
+                                continue
+
                             while True:
                                 is_down_raw = input(f"Is {s_num} downloaded? (y/n): ").lower()
                                 if is_down_raw in ['y', 'n']:
@@ -174,6 +201,25 @@ try:
                             print("Invalid input. Please type 'y' or 'n'.")
 
         elif choice == "5":
+            print("\n----- Edit Item -----")
+            raw_cat = input("Category (Movies, Tv Shows, or Music) or type 'goback' to go back: ").strip()
+            cat = raw_cat.lower().replace(" ", "")
+
+            if cat == "goback":
+                print("\nReturning to Main Menu...")
+            elif cat == "movies":
+                tools_tracker.edit_movie(data)
+                data = tools_tracker.load_menu()
+            elif cat == "tvshows":
+                tools_tracker.edit_tvshow(data)
+                data = tools_tracker.load_menu()
+            elif cat == "music":
+                tools_tracker.edit_music(data)
+                data = tools_tracker.load_menu()
+            elif cat not in ["movies", "tvshows", "music"]:
+                print("Invalid category. Please type Movies, Tv Shows, or Music.")
+
+        elif choice == "6":
             print("\nGoodbye!")
             break
         else:

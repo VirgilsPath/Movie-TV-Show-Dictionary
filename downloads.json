@@ -7,6 +7,66 @@
                 "downloaded": true
             },
             {
+                "name": "30 Days of Night",
+                "year": "2007",
+                "downloaded": true
+            },
+            {
+                "name": "American Sweatshop",
+                "year": "2025",
+                "downloaded": false
+            },
+            {
+                "name": "Bureau 749",
+                "year": "2024",
+                "downloaded": false
+            },
+            {
+                "name": "Cube",
+                "year": "1997",
+                "downloaded": true
+            },
+            {
+                "name": "Cube 2: Hypercube",
+                "year": "2002",
+                "downloaded": true
+            },
+            {
+                "name": "Cube Zero",
+                "year": "2004",
+                "downloaded": true
+            },
+            {
+                "name": "Faces of Death",
+                "year": "1978",
+                "downloaded": false
+            },
+            {
+                "name": "Faces of Death",
+                "year": "2026",
+                "downloaded": false
+            },
+            {
+                "name": "Faces of Death 2",
+                "year": "1981",
+                "downloaded": false
+            },
+            {
+                "name": "Faces of Death 3",
+                "year": "1985",
+                "downloaded": false
+            },
+            {
+                "name": "Faces of Death 4",
+                "year": "1990",
+                "downloaded": false
+            },
+            {
+                "name": "Faces of Death: Fact of Fiction?",
+                "year": "1999",
+                "downloaded": false
+            },
+            {
                 "name": "Ghost Ship",
                 "year": "2002",
                 "downloaded": true
@@ -22,6 +82,16 @@
                 "downloaded": true
             },
             {
+                "name": "Hunting Matthew Nichols",
+                "year": "2024",
+                "downloaded": false
+            },
+            {
+                "name": "Incision",
+                "year": "2020",
+                "downloaded": false
+            },
+            {
                 "name": "Inside",
                 "year": "2007",
                 "downloaded": false
@@ -32,9 +102,44 @@
                 "downloaded": true
             },
             {
+                "name": "Life-Size",
+                "year": "2000",
+                "downloaded": true
+            },
+            {
+                "name": "Posse",
+                "year": "1975",
+                "downloaded": false
+            },
+            {
+                "name": "Prey",
+                "year": "2010",
+                "downloaded": false
+            },
+            {
+                "name": "Pusher",
+                "year": "1996",
+                "downloaded": false
+            },
+            {
+                "name": "Ravenous",
+                "year": "2017",
+                "downloaded": false
+            },
+            {
+                "name": "Rawhead Rex",
+                "year": "1986",
+                "downloaded": false
+            },
+            {
                 "name": "Redline",
                 "year": "2009",
                 "downloaded": true
+            },
+            {
+                "name": "Reptile",
+                "year": "2023",
+                "downloaded": false
             },
             {
                 "name": "Stir of Echoes",
@@ -42,13 +147,43 @@
                 "downloaded": true
             },
             {
+                "name": "Svaha: The Sixth Finger",
+                "year": "2019",
+                "downloaded": true
+            },
+            {
+                "name": "The Deer Hunter",
+                "year": "1978",
+                "downloaded": false
+            },
+            {
                 "name": "The Devil's Rock",
                 "year": "2011",
                 "downloaded": true
             },
             {
+                "name": "The Dictator",
+                "year": "2012",
+                "downloaded": false
+            },
+            {
+                "name": "The End of Oak Street",
+                "year": "2026",
+                "downloaded": false
+            },
+            {
                 "name": "The House That Jack Built",
                 "year": "2018",
+                "downloaded": false
+            },
+            {
+                "name": "The Mortuary Assistant",
+                "year": "2026",
+                "downloaded": false
+            },
+            {
+                "name": "The Odyssey",
+                "year": "2026",
                 "downloaded": false
             },
             {
@@ -62,6 +197,11 @@
                 "downloaded": true
             },
             {
+                "name": "True Legend",
+                "year": "2010",
+                "downloaded": false
+            },
+            {
                 "name": "Unfriended",
                 "year": "2014",
                 "downloaded": true
@@ -70,15 +210,137 @@
                 "name": "Unfriended: Dark Web",
                 "year": "2018",
                 "downloaded": true
+            },
+            {
+                "name": "Upgrade",
+                "year": "2018",
+                "downloaded": false
             }
         ],
         "tvshows": [
+            {
+                "name": "American Gods",
+                "year": "2017",
+                "seasons": {
+                    "Season 1": true,
+                    "Season 2": true,
+                    "Season 3": true
+                }
+            },
+            {
+                "name": "Becker",
+                "year": "1998",
+                "seasons": {
+                    "Season 1": false,
+                    "Season 2": false,
+                    "Season 3": false,
+                    "Season 4": false,
+                    "Season 5": false,
+                    "Season 6": false
+                }
+            },
+            {
+                "name": "Cybersix",
+                "year": "1999",
+                "seasons": {
+                    "Season 1": false
+                }
+            },
+            {
+                "name": "Dexter",
+                "year": "2006",
+                "seasons": {
+                    "Season 1": false,
+                    "Season 2": false,
+                    "Season 3": false,
+                    "Season 4": false,
+                    "Season 5": false,
+                    "Season 6": false,
+                    "Season 7": false,
+                    "Season 8": false
+                }
+            },
+            {
+                "name": "Full Metal Panic!",
+                "year": "2002",
+                "seasons": {
+                    "Season 1": false,
+                    "Season 2": false,
+                    "Season 3": false
+                }
+            },
+            {
+                "name": "Gintama",
+                "year": "2006",
+                "seasons": {
+                    "Season 1": false,
+                    "Season 2": false,
+                    "Season 3": false,
+                    "Season 4": false,
+                    "Season 5": false,
+                    "Season 6": false,
+                    "Season 7": false,
+                    "Season 8": false,
+                    "Season 9": false
+                }
+            },
+            {
+                "name": "Nautilus",
+                "year": "2024",
+                "seasons": {
+                    "Season 1": false
+                }
+            },
+            {
+                "name": "Orb: On the Movements of the Earth",
+                "year": "2024",
+                "seasons": {
+                    "Season 1": false
+                }
+            },
+            {
+                "name": "Pumpkin Scissors",
+                "year": "2006",
+                "seasons": {
+                    "Season 1": false
+                }
+            },
             {
                 "name": "Solo Leveling",
                 "year": "2024",
                 "seasons": {
                     "Season 1": true,
                     "Season 2": true
+                }
+            },
+            {
+                "name": "Space Dandy",
+                "year": "2014",
+                "seasons": {
+                    "Season 1": true,
+                    "Season 2": false
+                }
+            },
+            {
+                "name": "The Miracle We Met",
+                "year": "2018",
+                "seasons": {
+                    "Season 1": false
+                }
+            },
+            {
+                "name": "Tower of God",
+                "year": "2020",
+                "seasons": {
+                    "Season 1": false,
+                    "Season 2": false
+                }
+            },
+            {
+                "name": "Twilight of the Gods",
+                "year": "2024",
+                "seasons": {
+                    "Season 1": false
                 }
             },
             {
